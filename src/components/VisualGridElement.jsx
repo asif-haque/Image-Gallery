@@ -31,7 +31,7 @@ function VisualGridElement({ item, video }) {
             src={item.webformatURL}
             alt=""
             onClick={handleImgClick}
-            className={`preview-img, ${!show && `img-hover`}`}
+            className="preview-img"
           />
         )}
 

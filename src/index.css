@@ -26,7 +26,10 @@
   color: black;
 }
 
-.search:hover {
+.search-field {
+  width: 300px;
+}
+.search-btns:hover {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
   transition: 30ms ease-in-out;
 }
@@ -53,7 +56,7 @@
 }
 
 .modal-img {
-  height: 75vh;
+  height: 85vh;
   width: auto;
   /* object-fit: contain; */
 }
@@ -96,5 +99,13 @@
 @media (max-width: 1000px) {
   .modal-img {
     height: auto;
+  }
+  .search-field {
+    width: 250px;
+  }
+}
+@media (max-width: 400px) {
+  .search-field {
+    width: 150px;
   }
 }
