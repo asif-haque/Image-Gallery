@@ -5,16 +5,23 @@ import { useTappedImg } from "../contexts/TappedImg";
 export default function Modal() {
   const { show, setShow } = useShow();
   const { imgData } = useTappedImg();
+
+  const OVERLAY_STYLES = {
+    position: "fixed",
+    top: "0px",
+    left: "0px",
+    backgroundColor: "black",
+    opacity: "0.1",
+    width: "100vw",
+    height: "100vh",
+  };
   const MODAL_STYLES = {
     position: "fixed",
     top: "50%",
     left: "50%",
+    zIndex: "1",
     transform: "translate(-50%, -50%)",
-    boxShadow:
-      "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
-  };
-  const MODAL_IMG_STYLES = {
-    height: "69vh",
+    boxShadow: "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
   };
   const MODAL_CLOSE_BTN_STYLES = {
     position: "absolute",
@@ -43,20 +50,23 @@ export default function Modal() {
   };
 
   return show ? (
-    <div style={MODAL_STYLES}>
-      <img
-        src={imgData.largeImageURL}
-        alt="loading..."
-        className="modal-img"
-      />
-      <button style={MODAL_CLOSE_BTN_STYLES} onClick={() => setShow(false)}>
-        x
-      </button>
-      <a href={imgData.pageURL} target="_blank">
-        <button style={MODAL_DWNLD_BTN_STYLES}>
-          <span className="material-symbols-outlined ">download</span>
+    <>
+      <div style={MODAL_STYLES}>
+        <img
+          src={imgData.largeImageURL}
+          alt="loading..."
+          className="modal-img"
+        />
+        <button style={MODAL_CLOSE_BTN_STYLES} onClick={() => setShow(false)}>
+          x
         </button>
-      </a>
-    </div>
+        <a href={imgData.pageURL} target="_blank">
+          <button style={MODAL_DWNLD_BTN_STYLES}>
+            <span className="material-symbols-outlined ">download</span>
+          </button>
+        </a>
+      </div>
+      <div style={OVERLAY_STYLES} onClick={() => setShow(false)} />
+    </>
   ) : null;
 }

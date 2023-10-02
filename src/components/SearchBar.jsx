@@ -5,38 +5,48 @@ function SearchBar() {
   // const [searchParams, setSearchParams] = useSearchParams();
   // console.log(searchParams);
 
-  const [value, setValue] = useState();
+  const [value, setValue] = useState("");
   const { setSearchTerm } = useSearchTerm();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (value.length == 0) {
-      setSearchTerm("self");
-    } else setSearchTerm(value);
+    value ? setSearchTerm(value) : setSearchTerm("self"); //i.e. my default term
   };
   return (
-    <>
+    <div className="flex justify-center items-center gap-1/4">
+      <button
+        className="bg-gray-900 text-white p-2 m-0 rounded flex items-center search"
+        onClick={() => setSearchTerm("self")}
+      >
+        <span class="material-symbols-outlined">home</span>
+      </button>
       <form
         action=""
         onSubmit={handleSubmit}
-        className="flex justify-center items-center my-5"
+        className="flex justify-center items-center my-5 mx-3"
       >
         <input
           type="text"
           placeholder="Search for image..."
-          className="border-solid border-b p-2 mx-3"
-          style={{ width: "25%" }}
+          className="border-solid border-b p-2"
+          style={{ width: "300px" }}
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
-        <button
-          type="submit"
-          className="bg-gray-900 text-white p-2 m-0 rounded flex items-center search"
-        >
-          <span class="material-symbols-outlined">search</span>
-        </button>
       </form>
-    </>
+      <button
+        className="bg-gray-900 text-white p-2 m-0 rounded flex items-center search"
+        onClick={() => setValue("")}
+      >
+        <span class="material-symbols-outlined">backspace</span>
+      </button>
+      <button
+        onClick={handleSubmit}
+        className="bg-gray-900 text-white p-2 m-0 mx-2 rounded flex items-center search"
+      >
+        <span className="material-symbols-outlined">search</span>
+      </button>
+    </div>
   );
 }
 

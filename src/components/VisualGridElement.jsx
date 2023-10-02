@@ -2,8 +2,8 @@ import { Button, Col } from "react-bootstrap";
 import { useShow } from "../contexts/Show";
 import { useTappedImg } from "../contexts/TappedImg";
 
-function ImageDiv({ item }) {
-  const { setShow } = useShow();
+function VisualGridElement({ item, video }) {
+  const { show, setShow } = useShow();
   const { setImgData } = useTappedImg();
   const tags = item.tags.split(`, `); //String => Array
 
@@ -15,19 +15,26 @@ function ImageDiv({ item }) {
   return (
     <Col sm={12} md={6} lg={4} className="mb-3">
       <div
-        className="p-3 shadow"
+        className="p-3 shadow grid-element"
         style={{
           height: "100%",
           width: "95%",
           margin: "auto",
         }}
       >
-        <img
-          src={item.webformatURL}
-          alt=""
-          onClick={handleImgClick}
-          className="preview-img"
-        />
+        {video ? (
+          <video controls>
+            <source src={item.videos.small.url} type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            src={item.webformatURL}
+            alt=""
+            onClick={handleImgClick}
+            className={`preview-img, ${!show && `img-hover`}`}
+          />
+        )}
+
         <div className="flex img-description mt-3">
           <ul className="p-0 mb-4">
             <li>
@@ -64,4 +71,4 @@ function ImageDiv({ item }) {
   );
 }
 
-export default ImageDiv;
+export default VisualGridElement;

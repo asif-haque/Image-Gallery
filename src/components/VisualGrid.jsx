@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import ImageDiv from "./ImageDiv";
+import VisualGridElement from "./VisualGridElement";
 import { Container, Row } from "react-bootstrap";
 import { useSearchTerm } from "../contexts/SearchTerm";
 
-function Images() {
+function VisualGrid({ video }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -16,7 +16,9 @@ function Images() {
     const dataFetch = async () => {
       try {
         const response = await fetch(
-          `https://pixabay.com/api/?key=${apiKey}&q=${searchTerm}&image_type=photo&pretty=true&per_page=${perPage}`
+          `https://pixabay.com/api/${
+            video ? `videos/` : ``
+          }?key=${apiKey}&q=${searchTerm}&image_type=photo&pretty=true&per_page=${perPage}`
         ); // fetch gives me a promise => that promise on resolve gives me response object
         if (!response.ok) {
           throw new Error(`Status: ${response.status}`);
@@ -40,15 +42,21 @@ function Images() {
         {data &&
           (data.hits.length === 0 ? (
             <>
-              <h1 className="text-center mt-5" style={{fontSize: "5rem"}}>:(</h1>
-              <h1 className="text-center mt-3">No Images Found</h1>
+              <h1 className="text-center mt-5" style={{ fontSize: "5rem" }}>
+                :(
+              </h1>
+              <h1 className="text-center mt-3">
+                No {video ? "Videos" : "Images"} Found
+              </h1>
             </>
           ) : (
-            data.hits.map((item) => <ImageDiv item={item} key={item.id} />)
+            data.hits.map((item) => (
+              <VisualGridElement item={item} key={item.id} video={video} />
+            ))
           ))}
       </Row>
     </Container>
   );
 }
 
-export default Images;
+export default VisualGrid;
