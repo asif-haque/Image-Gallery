@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useSearchTerm } from "../contexts/SearchTerm";
 
 function SearchBar() {
@@ -7,6 +7,7 @@ function SearchBar() {
 
   const [value, setValue] = useState("");
   const { setSearchTerm } = useSearchTerm();
+  const inputRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,11 +35,15 @@ function SearchBar() {
           className="border-solid border-b p-2 search-field"
           value={value}
           onChange={(e) => setValue(e.target.value)}
+          ref={inputRef}
         />
       </form>
       <button
         className="bg-gray-900 text-white p-2 m-0 rounded flex items-center search-btns"
-        onClick={() => setValue("")}
+        onClick={() => {
+          setValue("");
+          inputRef.current.focus();
+        }}
       >
         <span class="material-symbols-outlined">backspace</span>
       </button>
