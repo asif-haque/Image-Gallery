@@ -22,7 +22,7 @@ function SearchBar() {
           setValue("");
         }}
       >
-        <span class="material-symbols-outlined">home</span>
+        <span className="material-symbols-outlined">home</span>
       </button>
       <form
         action=""
@@ -45,7 +45,7 @@ function SearchBar() {
           inputRef.current.focus();
         }}
       >
-        <span class="material-symbols-outlined">backspace</span>
+        <span className="material-symbols-outlined">backspace</span>
       </button>
       <button
         onClick={handleSubmit}

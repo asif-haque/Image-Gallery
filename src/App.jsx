@@ -39,7 +39,7 @@ function App() {
             <Modal />
             {scroll ? (
               <button id="top-btn" onClick={handleToTheTop}>
-                <span class="material-symbols-outlined">
+                <span className="material-symbols-outlined">
                   keyboard_double_arrow_up
                 </span>
               </button>
