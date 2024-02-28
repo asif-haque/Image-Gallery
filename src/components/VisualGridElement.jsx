@@ -56,7 +56,7 @@ function VisualGridElement({ item, video }) {
             </Button>
           </a>
         </div>
-        <div className="">
+        <div className="flex flex-wrap">
           {tags.map((tag, index) => (
             <span
               className="bg-gray-200 rounded-lg m-1 mr-3 px-2 py-1 text-sm"
@@ -64,7 +64,7 @@ function VisualGridElement({ item, video }) {
             >
               #{tag}
             </span>
-          ))}{" "}
+          ))}
         </div>
       </div>
     </Col>

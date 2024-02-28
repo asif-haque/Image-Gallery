@@ -12,7 +12,7 @@ function VisualGrid({ video }) {
 
   useEffect(() => {
     const apiKey = `39714103-844fde0d1dca6763520c6ed1e`;
-    const perPage = 200;
+    const perPage = 100;
     const dataFetch = async () => {
       try {
         const response = await fetch(

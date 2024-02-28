@@ -18,7 +18,7 @@
   padding: 10px;
   display: flex;
   align-items: center;
-  z-index: 20;
+  z-index: 5;
   transition: 0.3s ease-in-out;
 }
 #top-btn:hover {
@@ -54,9 +54,8 @@
 }
 
 .modal-img {
-  height: 85vh;
-  width: auto;
-  /* object-fit: contain; */
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 /* --------------------------------------------- Switching Nav --------------------------------------------- */

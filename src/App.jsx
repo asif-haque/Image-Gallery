@@ -9,17 +9,15 @@ import { Link, Route, Routes } from "react-router-dom";
 import Videos from "./pages/Videos";
 import Photos from "./pages/Photos";
 import { useState } from "react";
+import LocomotiveScroll from "locomotive-scroll";
 
 function App() {
   const [scroll, setScroll] = useState(false);
-  // window.onscroll = () => {
-  //   document.body.scrollTop > 500 ? setScroll(true) : setScroll(scroll);
-  // };
+
+  // const locomotiveScroll = new LocomotiveScroll();
+
   window.onscroll = () => {
-    if (
-      document.body.scrollTop > 200 ||
-      document.documentElement.scrollTop > 200
-    ) {
+    if (window.scrollY > window.innerWidth / 2) {
       setScroll(true);
     } else {
       setScroll(false);
@@ -34,6 +32,7 @@ function App() {
       <SearchTermProvider>
         <ShowProvider>
           <TappedImgProvider>
+            {/* NAVBAR */}
             <SearchBar />
             <SwitchingNav />
             <Modal />
@@ -44,10 +43,10 @@ function App() {
                 </span>
               </button>
             ) : null}
-
             <Routes>
               <Route path="/" element={<Photos />} />
               <Route path="/videos" element={<Videos />} />
+              {/* ROUTES FOR OTHER PAGES */}
             </Routes>
           </TappedImgProvider>
         </ShowProvider>

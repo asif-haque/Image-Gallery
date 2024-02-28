@@ -1,9 +1,7 @@
-import { useState } from "react";
 import VisualGrid from "../components/VisualGrid";
 
 function Videos() {
-  const [video, setVideo] = useState(true);
-  return <VisualGrid video={video} />;
+  return <VisualGrid video={true} />;
 }
 
 export default Videos;
