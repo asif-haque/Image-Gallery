@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import VisualGridElement from "./VisualGridElement";
+import VisualGridElement from "./VisualGridElement/VisualGridElement";
 import { Container, Row } from "react-bootstrap";
 import { useSearchTerm } from "../contexts/SearchTerm";
 

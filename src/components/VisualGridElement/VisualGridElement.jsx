@@ -1,6 +1,7 @@
 import { Button, Col } from "react-bootstrap";
-import { useShow } from "../contexts/Show";
-import { useTappedImg } from "../contexts/TappedImg";
+import { useShow } from "../../contexts/Show";
+import { useTappedImg } from "../../contexts/TappedImg";
+import "./VisualGridElement.css";
 
 function VisualGridElement({ item, video }) {
   const { show, setShow } = useShow();
@@ -15,7 +16,7 @@ function VisualGridElement({ item, video }) {
   return (
     <Col sm={12} md={6} lg={4} className="mb-3">
       <div
-        className="p-3 shadow grid-element"
+        className="p-3 shadow"
         style={{
           height: "100%",
           width: "95%",
@@ -27,15 +28,18 @@ function VisualGridElement({ item, video }) {
             <source src={item.videos.small.url} type="video/mp4" />
           </video>
         ) : (
-          <img
-            src={item.webformatURL}
-            alt=""
-            onClick={handleImgClick}
-            className="preview-img"
-          />
+          <div className="img-div relative overflow-hidden">
+            <img
+              src={item.webformatURL}
+              alt=""
+              onClick={handleImgClick}
+              className="preview-img"
+            />
+            {/* <div className="hoverlay w-full h-full bg-[rgba(0,0,0,0.1)] absolute top-0 left-0 -translate-y-[150%]"></div> */}
+          </div>
         )}
 
-        <div className="flex img-description mt-3">
+        <div className="flex justify-between mt-3">
           <ul className="p-0 mb-4">
             <li>
               <strong>Views: </strong>

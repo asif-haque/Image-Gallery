@@ -1,0 +1,13 @@
+.preview-img {
+  height: 35vh;
+  /* width: 100%; */
+  object-fit: contain;
+  transition: 0.3s ease-in-out;
+}
+.img-div:hover {
+  cursor: pointer;
+  .hoverlay {
+    transform: translateY(0);
+    transition: all 0.3s ease-out;
+  }
+}

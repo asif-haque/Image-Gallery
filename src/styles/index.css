@@ -29,28 +29,14 @@
 .search-field {
   width: 300px;
 }
+
 .search-btns:hover {
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
-  transition: 30ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  box-shadow: none;
+  scale: 103%;
 }
-
-.img-description {
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.preview-img {
-  height: 35vh;
-  width: 100%;
-  object-fit: contain;
-  transition: 0.3s ease-in-out;
-}
-.preview-img:hover {
-  cursor: pointer;
-  opacity: 0.7;
-}
-.grid-element:hover {
-  padding: 0.25rem;
+.search-btns:active {
+  scale: 95%;
 }
 
 .modal-img {

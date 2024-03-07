@@ -1,7 +1,7 @@
 import SearchBar from "./components/SearchBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { SearchTermProvider } from "./contexts/SearchTerm";
-import Modal from "./components/Modal";
+import Modal from "./components/Modal/Modal";
 import { ShowProvider } from "./contexts/Show";
 import { TappedImgProvider } from "./contexts/TappedImg";
 import SwitchingNav from "./components/SwitchingNav";
