@@ -1,13 +1,17 @@
 .preview-img {
   height: 35vh;
-  /* width: 100%; */
-  object-fit: contain;
+  object-fit: cover;
   transition: 0.3s ease-in-out;
 }
 .img-div:hover {
   cursor: pointer;
   .hoverlay {
-    transform: translateY(0);
     transition: all 0.3s ease-out;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: flex-end;
+    color: white;
+    font-weight: bold;
   }
 }

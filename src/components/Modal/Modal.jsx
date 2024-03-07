@@ -29,7 +29,7 @@ export default function Modal() {
               className="absolute right-[1rem] top-[1rem]"
               onClick={() => setShow(false)}
             >
-              <span className="material-symbols-outlined text-3xl">close</span>
+              <span className="material-symbols-outlined text-3xl text-white">close</span>
             </button>
             <a href={imgData.pageURL} target="_blank">
               <button className="absolute right-[4rem] top-[1rem] px-1 rounded drop-shadow bg-zinc-800 hover:scale-110 [transition:all,0.3s]">

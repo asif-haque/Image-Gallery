@@ -28,14 +28,18 @@ function VisualGridElement({ item, video }) {
             <source src={item.videos.small.url} type="video/mp4" />
           </video>
         ) : (
-          <div className="img-div relative overflow-hidden">
-            <img
-              src={item.webformatURL}
-              alt=""
-              onClick={handleImgClick}
-              className="preview-img"
-            />
-            {/* <div className="hoverlay w-full h-full bg-[rgba(0,0,0,0.1)] absolute top-0 left-0 -translate-y-[150%]"></div> */}
+          <div className="img-div relative" onClick={handleImgClick}>
+            <img src={item.webformatURL} alt="" className="preview-img" />
+            <div className="hoverlay w-full h-full bg-[rgba(0,0,0,0.2)] absolute top-0 left-0 p-2 hidden">
+              <span className="flex gap-1">
+                <span class="material-symbols-outlined">thumb_up</span>
+                {item.likes}
+              </span>
+              <span className="flex gap-1">
+                <span class="material-symbols-outlined">download</span>
+                {item.downloads}
+              </span>
+            </div>
           </div>
         )}
 
