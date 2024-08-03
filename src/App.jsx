@@ -5,7 +5,6 @@ import { ShowProvider } from "./contexts/Show";
 import { TappedImgProvider } from "./contexts/TappedImg";
 import SwitchingNav from "./components/header/SwitchingNav";
 import { Link, Route, Routes } from "react-router-dom";
-// import Videos from "./pages/Videos";
 import Photos from "./pages/Photos";
 import { lazy, Suspense, useState } from "react";
 import Loading from "./components/loaders/Loading";
@@ -49,7 +48,14 @@ function App() {
             <Suspense fallback={<Loading />}>
               <Routes>
                 <Route path="/" element={<Photos />}>
-                  <Route path="/:id" element={<Modal />} />
+                  <Route
+                    path="/:id"
+                    element={
+                      <Suspense fallback={<Loading />}>
+                        <Modal />
+                      </Suspense>
+                    }
+                  />
                 </Route>
                 <Route path="/videos" element={<Videos />} />
                 {/* ROUTES FOR OTHER PAGES */}
