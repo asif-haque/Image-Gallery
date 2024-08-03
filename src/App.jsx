@@ -1,15 +1,16 @@
-import SearchBar from "./components/SearchBar";
+import SearchBar from "./components/header/SearchBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { SearchTermProvider } from "./contexts/SearchTerm";
-import Modal from "./components/Modal/Modal";
 import { ShowProvider } from "./contexts/Show";
 import { TappedImgProvider } from "./contexts/TappedImg";
-import SwitchingNav from "./components/SwitchingNav";
+import SwitchingNav from "./components/header/SwitchingNav";
 import { Link, Route, Routes } from "react-router-dom";
-import Videos from "./pages/Videos";
+// import Videos from "./pages/Videos";
 import Photos from "./pages/Photos";
-import { useState } from "react";
-import LocomotiveScroll from "locomotive-scroll";
+import { lazy, Suspense, useState } from "react";
+import Loading from "./components/loaders/Loading";
+const Videos = lazy(() => import("./pages/Videos"));
+const Modal = lazy(() => import("./components/modal/Modal"));
 
 function App() {
   const [scroll, setScroll] = useState(false);
@@ -35,7 +36,9 @@ function App() {
             {/* NAVBAR */}
             <SearchBar />
             <SwitchingNav />
-            <Modal />
+            {/* <Suspense fallback={<Loading />}>
+              <Modal />
+            </Suspense> */}
             {scroll ? (
               <button id="top-btn" onClick={handleToTheTop}>
                 <span className="material-symbols-outlined">
@@ -43,11 +46,15 @@ function App() {
                 </span>
               </button>
             ) : null}
-            <Routes>
-              <Route path="/" element={<Photos />} />
-              <Route path="/videos" element={<Videos />} />
-              {/* ROUTES FOR OTHER PAGES */}
-            </Routes>
+            <Suspense fallback={<Loading />}>
+              <Routes>
+                <Route path="/" element={<Photos />}>
+                  <Route path="/:id" element={<Modal />} />
+                </Route>
+                <Route path="/videos" element={<Videos />} />
+                {/* ROUTES FOR OTHER PAGES */}
+              </Routes>
+            </Suspense>
           </TappedImgProvider>
         </ShowProvider>
       </SearchTermProvider>

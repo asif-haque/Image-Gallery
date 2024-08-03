@@ -9,6 +9,21 @@ export default function Modal() {
 
   document.querySelector("body").style.overflow = show ? "hidden" : "visible";
 
+  const downloadImage = async (e, url, filename) => {
+    e.stopPropagation();
+    const res = await fetch(url);
+    const blob = await res.blob();
+
+    const downloadUrl = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = downloadUrl;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     show &&
     imgData && (
@@ -29,15 +44,21 @@ export default function Modal() {
               className="absolute right-[1rem] top-[1rem]"
               onClick={() => setShow(false)}
             >
-              <span className="material-symbols-outlined text-3xl text-white">close</span>
+              <span className="material-symbols-outlined text-3xl text-white">
+                close
+              </span>
             </button>
-            <a href={imgData.pageURL} target="_blank">
-              <button className="absolute right-[4rem] top-[1rem] px-1 rounded drop-shadow bg-zinc-800 hover:scale-110 [transition:all,0.3s]">
-                <span className="material-symbols-outlined text-3xl text-white">
-                  download
-                </span>
-              </button>
-            </a>
+
+            <button
+              className="absolute right-[4rem] top-[1rem] px-1 rounded drop-shadow bg-zinc-800 hover:scale-110 [transition:all,0.3s]"
+              onClick={(e) =>
+                downloadImage(e, imgData.largeImageURL, `${imgData.id}.jpg`)
+              }
+            >
+              <span className="material-symbols-outlined text-3xl text-white">
+                download
+              </span>
+            </button>
           </div>
         </div>
       </>
