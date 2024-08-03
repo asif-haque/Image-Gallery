@@ -9,7 +9,7 @@ import Photos from "./pages/Photos";
 import { lazy, Suspense, useState } from "react";
 import Loading from "./components/loaders/Loading";
 const Videos = lazy(() => import("./pages/Videos"));
-const Modal = lazy(() => import("./components/modal/Modal"));
+const Modal = lazy(() => import("./components/modal/Modal.jsx"));
 
 function App() {
   const [scroll, setScroll] = useState(false);
@@ -48,14 +48,7 @@ function App() {
             <Suspense fallback={<Loading />}>
               <Routes>
                 <Route path="/" element={<Photos />}>
-                  <Route
-                    path="/:id"
-                    element={
-                      <Suspense fallback={<Loading />}>
-                        <Modal />
-                      </Suspense>
-                    }
-                  />
+                  <Route path="/:id" element={<Modal />} />
                 </Route>
                 <Route path="/videos" element={<Videos />} />
                 {/* ROUTES FOR OTHER PAGES */}
