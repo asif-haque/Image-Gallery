@@ -7,10 +7,8 @@ import { Route, Routes } from "react-router-dom";
 import Photos from "./pages/Photos";
 import { lazy, Suspense, useState } from "react";
 import Loading from "./components/loaders/Loading";
-// const Videos = lazy(() => import("./pages/Videos"));
-// const Modal = lazy(() => import("./components/modal/Modal"));
-import Videos from "./pages/Videos";
-import Modal from "./components/modal/Modal";
+const Videos = lazy(() => import("./pages/Videos"));
+const Modal = lazy(() => import("./components/modal-dir/Modal"));
 
 function App() {
   const [scroll, setScroll] = useState(false);
