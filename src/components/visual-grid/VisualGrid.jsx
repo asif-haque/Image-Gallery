@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import VisualGridElement from "./VisualGridElement";
 import { Container, Row } from "react-bootstrap";
 import { useSearchTerm } from "../../contexts/SearchTerm";
-import ReactLoading from "react-loading";
 import Loading from "../loaders/Loading";
 
 function VisualGrid({ video }) {
