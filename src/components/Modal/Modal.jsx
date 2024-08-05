@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useTappedImg } from "../../contexts/TappedImg";
-import "./Modal.css";
+import "./modal.css";
 import Loading from "../loaders/Loading";
 import { IoArrowBackSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";

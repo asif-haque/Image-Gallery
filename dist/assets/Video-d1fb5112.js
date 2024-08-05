@@ -1,0 +1,1 @@
+import{j as s}from"./index-e94347b7.js";const r=({item:e})=>s.jsx("video",{controls:!0,className:"h-[200px] mx-auto",children:s.jsx("source",{src:e.videos.small.url,type:"video/mp4"})});export{r as default};
