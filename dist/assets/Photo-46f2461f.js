@@ -1,1 +1,0 @@
-import{j as s,C as o}from"./index-e94347b7.js";const r=({item:a,handleImgClick:e})=>s.jsxs("div",{className:"img-div relative",onClick:e,children:[s.jsx("img",{src:a.webformatURL,alt:"",className:"preview-img"}),s.jsx("div",{className:"hoverlay w-full h-full bg-[rgba(0,0,0,0.2)] absolute top-0 left-0 p-2 hidden",children:s.jsx(o,{toCopy:a.webformatURL})})]});export{r as default};
