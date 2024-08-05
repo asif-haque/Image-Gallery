@@ -1,23 +1,20 @@
-import { Button, Col } from "react-bootstrap";
-import { useShow } from "../../contexts/Show";
+import { Col } from "react-bootstrap";
 import { useTappedImg } from "../../contexts/TappedImg";
 import "./VisualGridElement.css";
 import { lazy, Suspense } from "react";
 import { MdBookmarkBorder } from "react-icons/md";
 import Loading from "../loaders/Loading";
-import Modal from "../modal/Modal";
 import { useNavigate } from "react-router-dom";
+import CopyToClipboard from "../reusable/Copy-to-clipboard";
 const Video = lazy(() => import("./Video"));
 const Photo = lazy(() => import("./Photo"));
 
 function VisualGridElement({ item, video }) {
-  const { show, setShow } = useShow();
   const { setImgData } = useTappedImg();
   const tags = item.tags.split(`, `); //String => Array
 
   const navigate = useNavigate();
   const handleImgClick = () => {
-    setShow(true);
     setImgData(item);
     navigate(`/${item.id}`);
   };
@@ -43,20 +40,14 @@ function VisualGridElement({ item, video }) {
 
           <div className="flex justify-between my-3">
             <div className="flex items-center gap-1">
-              {/* <button
-              className="px-2 py-1 border group hover:bg-gray-900 hover:text-white duration-200 rounded"
-              onClick={() =>
-                downloadImage(
-                  video ? item.videos.large.url : item.largeImageURL,
-                  `${item.id}.${video ? `mp4` : `jpg`}`
-                )
-              }
-            > */}
               <span className="material-symbols-outlined">download</span>
-              {/* </button> */}
               <span>{item.downloads}</span>
             </div>
-            <div className="flex items-center text-3xl">
+            <div className="flex gap-2 items-center text-3xl">
+              <CopyToClipboard
+                toCopy={video ? item.videos.small.url : item.webformatURL}
+                className="lg:hidden"
+              />
               <button>
                 <MdBookmarkBorder />
               </button>

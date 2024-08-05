@@ -22,6 +22,7 @@ function VisualGrid({ video }) {
     const apiKey = import.meta.env.VITE_PIXABAY_API_KEY;
     const perPage = 18;
     const dataFetch = async () => {
+      setLoading(true);
       try {
         const response = await fetch(
           `https://pixabay.com/api/${
@@ -56,7 +57,7 @@ function VisualGrid({ video }) {
         document.body.offsetHeight
       ) {
         setPage((prev) => prev + 1);
-        // setLoading(true);
+        setLoading(true);
       }
     };
 
@@ -65,7 +66,7 @@ function VisualGrid({ video }) {
   }, []);
 
   return (
-    <Container fluid className="px-4">
+    <Container fluid className="px-2">
       {!loading && !data.length && error && (
         <h1 className="text-center animate-bounce my-20">{error}</h1>
       )}
